@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.terradue</groupId>
     <artifactId>dcs-python-parent</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.1-docker</version>
   </parent>
   <description>SATCEN-02-02-01 - Detection of potential illegal mining activities</description>
   <version>0.1</version>
