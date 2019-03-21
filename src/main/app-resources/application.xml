@@ -14,7 +14,7 @@
     <node id="notebook">
       <job id="notebook"/>
       <sources>
-        <source id="source" title="Input references" abstract="Input references" refid="string:list" scope="runtime">https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190308T144729_N0211_R139_T19LDG_20190308T185300,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190308T144729_N0211_R139_T19LDF_20190308T185300</source>
+        <source id="source" title="Input references" abstract="Input references" refid="string:list" scope="runtime">https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190308T144729_N0211_R139_T19LDG_20190308T185300,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190308T144729_N0211_R139_T19LDF_20190308T185300,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190206T144729_N0211_R139_T19LCF_20190206T185013,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190206T144729_N0211_R139_T19LDF_20190206T185013</source>
       </sources>
     </node>
   </workflow>
