@@ -11,7 +11,7 @@
     <version>2.0.0</version>
   </parent>
   <description>SATCEN-02-02-01 - Detection of potential illegal mining activities</description>
-  <version>0.7</version>
+  <version>0.8-SNAPSHOT</version>
   <properties>
     <summary>SATCEN-02-02-01 - Detection of potential illegal mining activities</summary>
     <description>SATCEN-02-02-01 - Detection of potential illegal mining activities</description>
