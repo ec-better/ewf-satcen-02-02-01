@@ -89,15 +89,7 @@ def get_image_wkt(product):
     
     return result_wkt
 
-def extract_mask(in_mineral, out_mask):
-    
-    translate_options = gdal.TranslateOptions(gdal.ParseCommandLine('-b 4 '))
-                                                                    
-    ds = gdal.Open(in_mineral, gdal.OF_READONLY)
 
-    gdal.Translate(out_mask, 
-                   ds, 
-                   options=translate_options)
 
     
     
@@ -106,7 +98,7 @@ def create_rgb(in_mineral, out_rgb):
     translate_options = gdal.TranslateOptions(gdal.ParseCommandLine('-co COMPRESS=LZW '\
                                                                     '-ot UInt16 ' \
                                                                     '-a_nodata 256 ' \
-                                                                    '-b 1 -b 2 -b 3 '))
+                                                                    '-b 1 -b 2 -b 3 -b 4'))
                                                                     
     ds = gdal.Open(in_mineral, gdal.OF_READONLY)
 
