@@ -9,7 +9,7 @@ def cog(input_tif, output_tif):
     
     translate_options = gdal.TranslateOptions(gdal.ParseCommandLine('-co TILED=YES ' \
                                                                     '-co COPY_SRC_OVERVIEWS=YES ' \
-                                                                    ' -co COMPRESS=LZW'))
+                                                                    '-co COMPRESS=LZW'))
 
     ds = gdal.Open(input_tif, gdal.OF_READONLY)
 
@@ -88,3 +88,20 @@ def get_image_wkt(product):
                      transform.TransformPoint(max_x, max_y)[1]).wkt
     
     return result_wkt
+
+
+
+    
+    
+def create_rgb(in_mineral, out_rgb):
+    
+    translate_options = gdal.TranslateOptions(gdal.ParseCommandLine('-co COMPRESS=LZW '\
+                                                                    '-ot UInt16 ' \
+                                                                    '-a_nodata 256 ' \
+                                                                    '-b 1 -b 2 -b 3 -b 4'))
+                                                                    
+    ds = gdal.Open(in_mineral, gdal.OF_READONLY)
+
+    gdal.Translate(out_rgb, 
+                   ds, 
+                   options=translate_options)
