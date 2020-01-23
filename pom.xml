@@ -7,8 +7,8 @@
   <name>ewf-s2-mineral-composite</name>
   <parent>
     <groupId>com.terradue</groupId>
-    <artifactId>dcs-python-parent</artifactId>
-    <version>3.0.1-docker</version>
+    <artifactId>ewf-python-parent</artifactId>
+    <version>1.0-docker</version>
   </parent>
   <description>Sentinel-2 Mineral RGB Composite</description>
   <version>0.10</version>
