@@ -117,7 +117,7 @@ ciop = cioppy.Cioppy()"""))
     
     for reference in references:
       code.append(nbf.v4.new_code_cell('reference = "' + reference + '"'))
-      code.append(nbf.v4.new_code_cell("search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime')"))
+      code.append(nbf.v4.new_code_cell("search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime',creds='{}:{}'.format(user,apikey))"))
       code.append(nbf.v4.new_code_cell("retrieved = ciop.copy(search[0]['enclosure'], tmp_dir)"))
       code.append(nbf.v4.new_code_cell("assert(retrieved)"))
         
@@ -130,8 +130,7 @@ def stage_in():
  
     for reference in references:
       ciop.log('INFO', 'The input reference is: ' + reference)    
-      
-      search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime')
+      search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime',creds='{}:{}'.format(username,api_key))
       assert(search), sys.exit(ERR_RESOLUTION)
   
       ciop.log('INFO', 'Retrieve %s from %s' % (search[0]['identifier'], search[0]['enclosure']))
@@ -189,6 +188,9 @@ def clean_up():
 def main():
 
     global runtime
+    username = ciop.getparam('_T2Username')
+    api_key = ciop.getparam('_T2ApiKey')
+
     runtime = os.path.join(ciop.tmp_dir, str(uuid.uuid4()))    
 
     ciop.log('DEBUG', 'The runtime folder is %s' % (runtime))
