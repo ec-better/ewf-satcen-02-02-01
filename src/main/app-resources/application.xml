@@ -2,19 +2,19 @@
   <jobTemplates>
     <jobTemplate id="notebook">
       <streamingExecutable>/application/notebook/run</streamingExecutable>
-      <defaultParameters><parameter id="aoi" title="Area of interest (bbox)" abstract="Area of interest defined as a bounding box" maxOccurs="1" scope="runtime" type="LiteralData">-70.5659,-13.0922,-69.1411,-12.4567</parameter></defaultParameters>
+      <defaultParameters><parameter id="aoi" title="Area of interest (bbox)" abstract="Area of interest defined as a bounding box" maxOccurs="1" scope="runtime" type="LiteralData">-70.5659,-13.0922,-69.1411,-12.4567</parameter><parameter id="_T2Username" title="Ellip username" abstract="Ellip username" maxOccurs="1" scope="runtime" type="LiteralData">better-satcen-02-02-01</parameter><parameter id="_T2ApiKey" title="Ellip API key for data pipeline" abstract="Ellip API key for data pipeline" maxOccurs="1" scope="runtime" type="LiteralData"/></defaultParameters>
      <defaultJobconf>
         <property id="mapred.task.timeout">9900000000000</property>
         <property id="ciop.job.max.tasks">1</property> 
      </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
-  <workflow id="ewf-satcen-02-02-01" title="SATCEN-02-02-01 - Detection of potential illegal mining activities" abstract="SATCEN-02-02-01 - Detection of potential illegal mining activities">
+  <workflow id="ewf-s2-mineral-composite" title="Sentinel-2 Mineral RGB Composite" abstract="Sentinel-2 Mineral RGB Composite">
     <workflowVersion>1.0</workflowVersion>
     <node id="notebook">
       <job id="notebook"/>
       <sources>
-        <source id="source" title="Input references" abstract="Input references" refid="string:list" scope="runtime">https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190308T144729_N0211_R139_T19LDG_20190308T185300,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190308T144729_N0211_R139_T19LDF_20190308T185300,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190206T144729_N0211_R139_T19LCF_20190206T185013,https://catalog.terradue.com/sentinel2/search?format=atom&amp;uid=S2B_MSIL2A_20190206T144729_N0211_R139_T19LDF_20190206T185013</source>
+        <source id="source" title="Input references" abstract="Input references" refid="string:list" scope="runtime">https://catalog.terradue.com/sen2cor/search?format=atom&amp;uid=A8204ADAC1D07DE1AAFCC0C87CFDB6CB1DDAD310,https://catalog.terradue.com/sen2cor/search?format=atom&amp;uid=57D0F4788C1C7DB2898D9F1C256F2D391B184453</source>
       </sources>
     </node>
   </workflow>
