@@ -4,6 +4,29 @@ import pandas as pd
 import lxml.etree as etree
 import osr 
 from shapely.geometry import box
+import requests
+
+
+
+def get_original_identifier(url,username,api_key):
+   
+    req = requests.get(url,
+                        auth = (username, api_key),
+                        allow_redirects = True)
+    
+    root = etree.fromstring(req.content)
+    
+    original_identifier = root.xpath('/a:feed/a:entry/b:EarthObservation/d:metaDataProperty/d:EarthObservationMetaData/d:vendorSpecific/d:SpecificInformation/d:localValue/text()', 
+                                      namespaces={'a':'http://www.w3.org/2005/Atom',
+                                                  'b':'http://www.opengis.net/opt/2.1',
+                                                  'd':'http://www.opengis.net/eop/2.1'})
+    
+    return original_identifier[0].split('.SAFE')[0]
+
+
+
+
+
 
 def cog(input_tif, output_tif):
     
@@ -31,9 +54,9 @@ def analyse(row):
     
     series = dict()
    
-    series['utm_zone'] = row['identifier'][39:41]
-    series['latitude_band'] = row['identifier'][41]
-    series['grid_square']  = row['identifier'][42:44]
+    series['utm_zone'] = row['original_identifier'][39:41]
+    series['latitude_band'] = row['original_identifier'][41]
+    series['grid_square']  = row['original_identifier'][42:44]
 
     
     return pd.Series(series)
@@ -45,21 +68,21 @@ def get_band_path(row, band):
           'gml': 'http://www.opengis.net/gml'}
     
     path_manifest = os.path.join(row['local_path'],
-                                 row['identifier'] + '.SAFE', 
+                                 row['original_identifier'] + '.SAFE', 
                                 'manifest.safe')
     
     root = etree.parse(path_manifest)
-    
+    #print etree.tostring(root, pretty_print=True)
     bands = [band]
 
     for index, band in enumerate(bands):
 
         sub_path = os.path.join(row['local_path'],
-                                row['identifier'] + '.SAFE',
+                                row['original_identifier'] + '.SAFE',
                                 root.xpath('//dataObjectSection/dataObject/byteStream/fileLocation[contains(@href,("%s%s")) and contains(@href,("%s")) ]' % (row['latitude_band'],
                                 row['grid_square'], 
                                 band), 
-                                  namespaces=ns)[0].attrib['href'][2:])
+                                  namespaces=ns)[0].attrib['href'])
     
     return sub_path
 
