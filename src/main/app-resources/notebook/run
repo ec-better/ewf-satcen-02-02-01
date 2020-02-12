@@ -126,7 +126,7 @@ ciop = cioppy.Cioppy()"""))
     with open(fname, 'w') as f:
       nbf.write(nb_stagein, f)  
         
-def stage_in():
+def stage_in(username,api_key):
  
     for reference in references:
       ciop.log('INFO', 'The input reference is: ' + reference)    
@@ -204,10 +204,10 @@ def main():
   
     # Loops over all the inputs
     for reference in sys.stdin:
-      references.append(reference.rstrip())
+        references.append(reference.rstrip())
     
     # stage-in the data
-    stage_in()
+    stage_in(username, api_key)
     
     # create the reproducibility notebook for data stage-in
     reproducibility()     
