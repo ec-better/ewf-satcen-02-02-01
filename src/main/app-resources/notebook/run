@@ -116,30 +116,30 @@ ciop = cioppy.Cioppy()"""))
     code.append(nbf.v4.new_code_cell('if not os.path.isdir(tmp_dir): os.makedirs(tmp_dir)'))
     
     for reference in references:
-      code.append(nbf.v4.new_code_cell('reference = "' + reference + '"'))
-      code.append(nbf.v4.new_code_cell("search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime',creds='{}:{}'.format(user,apikey))"))
-      code.append(nbf.v4.new_code_cell("retrieved = ciop.copy(search[0]['enclosure'], tmp_dir)"))
-      code.append(nbf.v4.new_code_cell("assert(retrieved)"))
+        code.append(nbf.v4.new_code_cell('reference = "' + reference + '"'))
+        code.append(nbf.v4.new_code_cell("search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime',creds='{}:{}'.format(user,apikey))"))
+        code.append(nbf.v4.new_code_cell("retrieved = ciop.copy(search[0]['enclosure'], tmp_dir)"))
+        code.append(nbf.v4.new_code_cell("assert(retrieved)"))
         
     nb_stagein['cells'] = code
     fname = 'stage-in.ipynb'
     with open(fname, 'w') as f:
-      nbf.write(nb_stagein, f)  
+        nbf.write(nb_stagein, f)  
         
 def stage_in(username,api_key):
  
     for reference in references:
-      ciop.log('INFO', 'The input reference is: ' + reference)    
-      search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime',creds='{}:{}'.format(username,api_key))
-      assert(search), sys.exit(ERR_RESOLUTION)
+        ciop.log('INFO', 'The input reference is: ' + reference)    
+        search = ciop.search(end_point = reference, params = [], output_fields='enclosure,identifier', model='GeoTime',creds='{}:{}'.format(username,api_key))
+        assert(search), sys.exit(ERR_RESOLUTION)
   
-      ciop.log('INFO', 'Retrieve %s from %s' % (search[0]['identifier'], search[0]['enclosure']))
-      retrieved = ciop.copy(search[0]['enclosure'], tmp_dir)
-      assert(retrieved), sys.exit(ERR_STAGEIN)
+        ciop.log('INFO', 'Retrieve %s from %s' % (search[0]['identifier'], search[0]['enclosure']))
+        retrieved = ciop.copy(search[0]['enclosure'], tmp_dir,creds='{}:{}'.format(username,api_key) )
+        assert(retrieved), sys.exit(ERR_STAGEIN)
 
-      identifiers.append(search[0]['identifier'])
-      enclosures.append(search[0]['enclosure'])
-      local_files.append(retrieved) 
+        identifiers.append(search[0]['identifier'])
+        enclosures.append(search[0]['enclosure'])
+        local_files.append(retrieved) 
 
 def execute(nb_source, nb_target, kernel = 'python2'):
     
