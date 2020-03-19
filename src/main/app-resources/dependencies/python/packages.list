@@ -42,7 +42,7 @@ cdecimal=2.3=py27h14c3975_3
 certifi=2017.7.27.1=py27_0
 cffi=1.9.1=py27_0
 chardet=3.0.4=py27hfa10054_1
-cioppy=0.2.9=py27h6a2dc41_0
+cioppy=0.3.7=py27hf8027dd_0 
 click=6.7=py27h4225b90_0
 click-plugins=1.0.3=py27_0
 cligj=0.4.0=py27_0
