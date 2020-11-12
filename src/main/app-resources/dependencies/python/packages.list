@@ -7,7 +7,8 @@ backports.functools_lru_cache
 cioppy
 decorator
 deprecated
-gdal
+gdal>2.2.2
+poppler<0.66
 geopandas
 geos
 ipython
