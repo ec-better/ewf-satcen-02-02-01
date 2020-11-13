@@ -2,7 +2,7 @@
   <jobTemplates>
     <jobTemplate id="notebook">
       <streamingExecutable>/application/notebook/run</streamingExecutable>
-      <defaultParameters><parameter id="aoi" title="Area of interest (bbox)" abstract="Area of interest defined as a bounding box" maxOccurs="1" scope="runtime" type="LiteralData">-70.5659,-13.0922,-69.1411,-12.4567</parameter><parameter id="_T2Username" title="Ellip username" abstract="Ellip username" maxOccurs="1" scope="runtime" type="LiteralData">better-satcen-02-02-01</parameter><parameter id="_T2ApiKey" title="Ellip API key for data pipeline" abstract="Ellip API key for data pipeline" maxOccurs="1" scope="runtime" type="LiteralData"/></defaultParameters>
+      <defaultParameters><parameter id="aoi" title="Area of interest (bbox)" abstract="Area of interest defined as a bounding box" maxOccurs="1" scope="runtime" type="LiteralData">-70.5659,-13.0922,-69.1411,-12.4567</parameter><parameter id="_T2Username" title="Ellip username" abstract="Ellip username" maxOccurs="1" scope="runtime" type="LiteralData"/><parameter id="_T2ApiKey" title="Ellip API key for data pipeline" abstract="Ellip API key for data pipeline" maxOccurs="1" scope="runtime" type="LiteralData"/></defaultParameters>
      <defaultJobconf>
         <property id="mapred.task.timeout">9900000000000</property>
         <property id="ciop.job.max.tasks">1</property> 
