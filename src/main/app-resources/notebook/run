@@ -1,4 +1,4 @@
-#!/opt/anaconda/bin/python
+#!/opt/anaconda/envs/env_ewf_s2_mineral_composite/bin/python
 
 import sys
 reload(sys)
@@ -13,6 +13,7 @@ import uuid
 import ast
 
 sys.path.append('/opt/anaconda/bin/')
+sys.path.append('/opt/anaconda/envs/env_ewf_s2_mineral_composite/bin')
 import cioppy
 ciop = cioppy.Cioppy()
 
@@ -217,7 +218,7 @@ def main():
     nb_target = os.path.join(runtime, 'result.ipynb')  
 
     try:
-      execute(nb_source, nb_target, 'python2') 
+      execute(nb_source, nb_target, 'env_ewf_s2_mineral_composite') 
     except Exception, e:
       out = None
       ciop.log('ERROR', 'Error executing the notebook "%s".' % nb_source)

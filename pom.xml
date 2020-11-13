@@ -109,7 +109,7 @@
                     <require>OTB</require>
                   </requires>
                   <postinstallScriptlet combine.self="override">
-                    <script>conda update conda -y &amp;&amp; conda install -y --file /application/dependencies/python/packages.list</script>
+                    <script>conda update conda -y &amp;&amp; conda env create --name env_ewf_s2_mineral_composite --file /application/dependencies/python/environment.yml &amp;&amp; /opt/anaconda/envs/env_ewf_s2_mineral_composite/bin/python -m ipykernel install --name env_ewf_s2_mineral_composite</script>
                   </postinstallScriptlet>
                 </configuration>
               </execution>
