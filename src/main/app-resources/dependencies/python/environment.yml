@@ -1,0 +1,31 @@
+name: env_ewf_s2_mineral_composite
+channels:
+  - conda-forge
+  - terradue
+  - defaults
+dependencies:
+  - app_descriptor_generator
+  - backoff
+  - backports.functools_lru_cache
+  - cioppy
+  - decorator
+  - deprecated
+  - gdal>2.2.2
+  - poppler<0.66
+  - geopandas
+  - geos
+  - ipython
+  - ipykernel
+  - jupyter_client=5.3.4=py27_0
+  - libxml2
+  - lxml
+  - nbconvert
+  - nbformat
+  - numpy
+  - pandas
+  - python
+  - python-dateutil=2.8.0
+  - python_abi=2.7
+  - requests
+  - shapely
+prefix: /opt/anaconda/envs/env_ewf_s2_mineral_composite
