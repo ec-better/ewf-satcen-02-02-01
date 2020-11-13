@@ -17,6 +17,7 @@ dependencies:
   - ipython
   - ipykernel
   - jupyter_client=5.3.4=py27_0
+  - kealib=1.4.7
   - libxml2
   - lxml
   - nbconvert
